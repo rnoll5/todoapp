@@ -5,14 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>lobby</ion-title>
+  <ion-navbar color="primary" text-center>
+    <ion-title>ToDo Lists </ion-title>
+        <ion-buttons end>
+      <button ion-button item-right (click)="logout()" icon-left>
+        <ion-icon name="ios-exit-outline"></ion-icon>LogOut
+      </button>
+    </ion-buttons>
+    <!--<button ion-button item-right color="primary" clear (click)="logout()" icon-left><ion-icon name="ios-exit-outline"></ion-icon>LogOut</button>-->
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button outline block color="primary" (click)="mylists()" icon-left><ion-icon name="ios-list-outline"></ion-icon>My Lists</button>
+    <button ion-button outline block color="primary" (click)="sharedlists()" icon-left><ion-icon name="ios-list-outline"></ion-icon>Shared Lists</button>
+    <button ion-button block color="primary" (click)="presentActionSheet()" icon-left><ion-icon name="ios-menu-outline"></ion-icon>
+    Menu
+  </button>
 </ion-content>
+

@@ -6,13 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
+  <ion-navbar color="primary" text-center>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<form #loginForm="ngForm" (ngSubmit)="login()" novalidate>  
+  <ion-list>
 
+  <ion-item>
+    <ion-input name="email" type="text" placeholder="Email" [(ngModel)]="user.email" required>Email</ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input name="email" type="password" placeholder="Password" [(ngModel)]="user.password" required>Password</ion-input>
+  </ion-item>
+
+</ion-list>
+
+  <!--<input ion-button outline block color="primary" type="submit" value="Submit">-->
+
+  <button ion-button type="submit" outline block="true" color="primary">Log in</button>
+</form>
 </ion-content>
+

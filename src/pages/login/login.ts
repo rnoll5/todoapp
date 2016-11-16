@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { LobbyPage } from '../lobby/lobby';
+
 /*
   Generated class for the Login page.
 
@@ -13,10 +15,25 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
+    this.navCtrl = navCtrl;
+  }
+  
+  user={
+    email: "a@a.com",
+    password: "a"
+  };
 
   ionViewDidLoad() {
     console.log('Hello LoginPage Page');
+  }
+
+    login() {
+    this.navCtrl.setRoot(LobbyPage);
+  }
+  
+  signinForm(form) { 
+    if(form.invalid) return alert("Please complete the form before proceeding.");
   }
 
 }
