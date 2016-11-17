@@ -7,13 +7,39 @@
 <ion-header>
 
   <ion-navbar  color="primary" text-center>
-    <ion-title>Create New List</ion-title>
+    <ion-title>New List</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="outer-content">
+  <ion-list inset>
+    <ion-list-header>
+      <ion-label>List Title</ion-label>
+        <ion-input type="text"></ion-input>
+    </ion-list-header>
 
-<ion-content padding>
-
-
+    <ion-item-sliding>
+      <ion-item>
+        <!--<h2>List Item</h2>-->
+        <!--<p>List item description.</p>-->
+        <ion-label></ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item-options>
+        <!--editing option with more
+        <!--<button ion-button color="light" icon-left>-->-->
+        <!--  <ion-icon name="ios-more"></ion-icon>-->
+        <!--  More-->
+        <!--</button>-->
+        <button ion-button color="danger" icon-left>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+<button ion-button outline block color="primary">Add List Item</button>
+<button ion-button outline block color="primary">Share List</button>
+<button ion-button outline block color="primary">Create List</button>
+</ion-list> 
 </ion-content>

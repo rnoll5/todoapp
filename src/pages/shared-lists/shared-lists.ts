@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Platform, ActionSheetController } from 'ionic-angular';
 
 import { SharedTodoListPage } from '../shared-todo-list/shared-todo-list';
-
-// tabs
 import { LandingPage } from '../landing/landing';
+
+// menu
+import { LobbyPage } from '../lobby/lobby';
 import { CreateNewPage } from '../create-new/create-new';
 
 /*
@@ -19,22 +21,44 @@ import { CreateNewPage } from '../create-new/create-new';
 })
 export class SharedListsPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+              public platform: Platform,
+              public actionSheetCtrl: ActionSheetController) {
+                this.navCtrl = navCtrl;
+              }
 
   ionViewDidLoad() {
     console.log('Hello SharedListsPage Page');
+  }
+  
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Go to',
+      buttons: [
+        {
+          text: 'Home',
+          role: 'Home',
+          handler: () => {
+            this.navCtrl.push(LobbyPage);
+          }
+        },{
+          text: 'New List',
+          role: 'newlist',
+          handler: () => {
+            this.navCtrl.push(CreateNewPage);
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   sharedtodolist() {
     this.navCtrl.push(SharedTodoListPage);
   }
   
-  home() {
+  logout() {
     this.navCtrl.push(LandingPage);
-  }
-  
-  createNew() {
-    this.navCtrl.push(CreateNewPage);
   }
   
 }

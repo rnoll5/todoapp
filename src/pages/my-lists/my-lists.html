@@ -8,13 +8,19 @@
 
   <ion-navbar color="primary"  text-center>
     <ion-title>My Lists</ion-title>
+      <ion-buttons end>
+      <button ion-button item-right (click)="logout()" icon-left>
+        <ion-icon name="ios-exit-outline"></ion-icon>LogOut
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="action-sheets-basic-page">
 <button ion-button outline block color="primary" (click)="todolist()">Todolistpage</button>
-<button ion-button outline block color="primary" (click)="home()">homepage</button>
-<button ion-button outline block color="primary" (click)="createNew()">newlist</button>
+  <button ion-button block color="primary" (click)="presentActionSheet()" icon-left><ion-icon name="ios-menu-outline"></ion-icon>
+  Menu
+  </button>
 </ion-content>

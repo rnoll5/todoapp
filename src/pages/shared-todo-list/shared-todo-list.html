@@ -7,13 +7,34 @@
 <ion-header>
 
   <ion-navbar  color="primary" text-center>
-    <ion-title>Shared List Title</ion-title>
+    <ion-title>Shared List</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="outer-content">
+  <ion-list>
+    <ion-list-header>
+      List Title
+    </ion-list-header>
 
-<ion-content padding>
+    <ion-item-sliding>
+      <ion-item>
+        <h2>List Item</h2>
+        <p>List item description.</p>
+      </ion-item>
+      <ion-item-options>
+        <!--<button ion-button color="light" icon-left>-->
+        <!--  <ion-icon name="ios-more"></ion-icon>-->
+        <!--  More-->
+        <!--</button>-->
+        <button ion-button color="danger" icon-left>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
 
 
+</ion-list> 
 </ion-content>

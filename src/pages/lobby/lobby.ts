@@ -6,6 +6,7 @@ import { LandingPage } from '../landing/landing';
 import { MyListsPage } from '../my-lists/my-lists';
 import { SharedListsPage } from '../shared-lists/shared-lists';
 
+// menu
 import { FriendsPage} from '../friends/friends';
 import { ProfilePage } from '../profile/profile';
 import { CreateNewPage } from '../create-new/create-new';
