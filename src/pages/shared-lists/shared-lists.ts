@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Platform, ActionSheetController } from 'ionic-angular';
 
 import { SharedTodoListPage } from '../shared-todo-list/shared-todo-list';
@@ -20,10 +20,24 @@ import { CreateNewPage } from '../create-new/create-new';
   templateUrl: 'shared-lists.html'
 })
 export class SharedListsPage {
+    mySharedLists: any [] = [{
+    "id": 1,
+    "title": "Grocery List",
+    "item": ["apples", "carrots", "bread"]
+  }, {
+    "id": 2,
+    "title": "Errands",
+    "item": ["dry cleaning", "pharmacy", "post office"]
+  }, {
+    "id": 3,
+    "title": "Guest List", 
+    "item": ["Nemo", "Marlin", "Dory"]
+  }]
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
-              public actionSheetCtrl: ActionSheetController) {
+              public actionSheetCtrl: ActionSheetController,
+              public params: NavParams) {
                 this.navCtrl = navCtrl;
               }
 
@@ -53,8 +67,8 @@ export class SharedListsPage {
     actionSheet.present();
   }
 
-  sharedtodolist() {
-    this.navCtrl.push(SharedTodoListPage);
+  sharedtodolist(sharedList) {
+    this.navCtrl.push(SharedTodoListPage, {currentSharedList: sharedList});
   }
   
   logout() {

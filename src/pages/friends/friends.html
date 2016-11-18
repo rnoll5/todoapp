@@ -16,12 +16,12 @@
 <ion-content padding>
 
 <ion-list>
-  <ion-item>
+  <ion-item *ngFor="let friend of friends">
     <ion-icon color="primary" name="contacts" item-left></ion-icon>
-      Friend
+      {{friend.name}}
   </ion-item>
 </ion-list>
 
-<button ion-button outline block color="primary">New Friend Request</button>
+<button ion-button outline block color="primary" (click)="showPrompt()">New Friend Request</button>
 
 </ion-content>

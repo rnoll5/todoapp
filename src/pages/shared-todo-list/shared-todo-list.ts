@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { SharedListsPage } from '../shared-lists/shared-lists';
 
 /*
   Generated class for the SharedTodoList page.
@@ -13,10 +15,16 @@ import { NavController } from 'ionic-angular';
 })
 export class SharedTodoListPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+              public params: NavParams) {}
+              
+finalSharedList = {title: "", item: []};              
 
   ionViewDidLoad() {
     console.log('Hello SharedTodoListPage Page');
+    this.finalSharedList = this.params.data.currentSharedList;
+    console.log(this.finalSharedList);
+    console.log(this.finalSharedList.title);
   }
 
 }

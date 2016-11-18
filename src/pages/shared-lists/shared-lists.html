@@ -19,7 +19,13 @@
 
 
 <ion-content padding class="action-sheets-basic-page">
-  <button ion-button outline block color="primary" (click)="sharedtodolist()">sharedtodolistpage</button>
+  
+  <ion-list>
+  <ion-item *ngFor="let mySharedList of mySharedLists" (click)="sharedtodolist(mySharedList)">
+      {{mySharedList.title}}
+  </ion-item>
+</ion-list>
+
   <button ion-button block color="primary" (click)="presentActionSheet()" icon-left><ion-icon name="ios-menu-outline"></ion-icon>
   Menu
   </button>

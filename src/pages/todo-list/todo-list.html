@@ -15,14 +15,14 @@
 <ion-content padding class="outer-content">
   <ion-list>
     <ion-list-header>
-      List Title
+      {{finalList.title}}
     </ion-list-header>
 
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let listContent of finalList.item">
       <ion-item>
-        <h2>List Item</h2>
-        <p>List item description.</p>
+        <h2>{{listContent}}</h2>
       </ion-item>
+      
       <ion-item-options>
         <!--<button ion-button color="light" icon-left>-->
         <!--  <ion-icon name="ios-more"></ion-icon>-->

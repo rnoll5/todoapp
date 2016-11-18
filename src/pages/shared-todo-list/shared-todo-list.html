@@ -15,13 +15,13 @@
 <ion-content padding class="outer-content">
   <ion-list>
     <ion-list-header>
-      List Title
+      {{finalSharedList.title}}
     </ion-list-header>
 
-    <ion-item-sliding>
-      <ion-item>
-        <h2>List Item</h2>
-        <p>List item description.</p>
+    <ion-item-sliding *ngFor="let sharedContent of finalSharedList.item">
+      <ion-item >
+        <h2>{{sharedContent}}</h2>
+        <!--<p>List item description.</p>-->
       </ion-item>
       <ion-item-options>
         <!--<button ion-button color="light" icon-left>-->

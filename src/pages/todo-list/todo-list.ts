@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { MyListsPage } from '../my-lists/my-lists';
 
 /*
   Generated class for the TodoList page.
@@ -13,10 +15,19 @@ import { NavController } from 'ionic-angular';
 })
 export class TodoListPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+              public params: NavParams) {}
+  
+  finalList = {title: "", item: []};
 
   ionViewDidLoad() {
     console.log('Hello TodoListPage Page');
+    // console.log(this.params.data);
+    this.finalList = this.params.data.currentTodoList;
+    console.log(this.finalList);
+    console.log(this.finalList.title);
   }
 
+
 }
+
