@@ -8,6 +8,9 @@
 
   <ion-navbar  color="primary" text-center>
     <ion-title>New List</ion-title>
+          <ion-buttons end>
+            <button ion-button item-right (click)="add()" icon-left><ion-icon name="add"></ion-icon>Add</button>
+        </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -19,27 +22,28 @@
         <ion-input type="text"></ion-input>
     </ion-list-header>
 
-    <ion-item-sliding>
+    <ion-item>
+      <h2>{{ todo }}</h2>
+      <ion-label></ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item-sliding  *ngFor="let todo of todoList; let i = index">
+      
+      
       <ion-item>
-        <!--<h2>List Item</h2>-->
-        <!--<p>List item description.</p>-->
-        <ion-label></ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="todoList[i]"></ion-input>
       </ion-item>
+      
       <ion-item-options>
-        <!--editing option with more
-        <!--<button ion-button color="light" icon-left>-->-->
-        <!--  <ion-icon name="ios-more"></ion-icon>-->
-        <!--  More-->
-        <!--</button>-->
-        <button ion-button color="danger" icon-left>
+        <button ion-button color="danger" (click)="delete(i)" icon-left>
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
       </ion-item-options>
+      
+      
     </ion-item-sliding>
-<button ion-button outline block color="primary">Add List Item</button>
-<button ion-button outline block color="primary">Share List</button>
-<button ion-button outline block color="primary">Save List</button>
+<button ion-button outline block color="primary" (click)="saveShare()">Share List</button>
+<button ion-button outline block color="primary" (click)="save()">Save List</button>
 </ion-list> 
 </ion-content>
