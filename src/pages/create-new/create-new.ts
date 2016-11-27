@@ -4,7 +4,9 @@ import { AlertController } from 'ionic-angular';
 
 import { MyListsPage } from '../my-lists/my-lists';
 import { SharedListsPage } from '../shared-lists/shared-lists';
+import { TodoListPage } from '../todo-list/todo-list';
 
+import { RestTodoList } from '../../providers/rest-todo-list';
 /*
   Generated class for the CreateNew page.
 
@@ -18,7 +20,8 @@ import { SharedListsPage } from '../shared-lists/shared-lists';
 export class CreateNewPage {
 
   constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController) {}
+              public alertCtrl: AlertController,
+              public TodoListRest: RestTodoList) {}
 
   ionViewDidLoad() {
     console.log('Hello CreateNewPage Page');
@@ -26,7 +29,9 @@ export class CreateNewPage {
     public todoList = [];
     // public todoItems = [];
     todos = {};
- 
+    title = "";
+    
+    consoleLog = console.log;
     onPageDidEnter() {
         this.todoList = JSON.parse(localStorage.getItem("todos"));
         if(!this.todoList) {
@@ -42,14 +47,12 @@ export class CreateNewPage {
     
     add() {
         // if(this.todoItem != "") {
-            this.todoList.push("");
+            this.todoList.push({
+              name: ""
+            });
             localStorage.setItem("todos", JSON.stringify(this.todoList));
             // this.navCtrl.pop();
         // }
-    }
- 
-    save() {
-        this.navCtrl.push(MyListsPage);
     }
     
     saveShare() {
@@ -80,5 +83,18 @@ export class CreateNewPage {
     prompt.present();
     this.navCtrl.push(SharedListsPage);
   }
+  
+    saveList() {
+    this.TodoListRest.save(this.todoList)
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.getItem('userID');
+      window.localStorage.setItem('todoList', res.todoList);
+      this.navCtrl.setRoot(TodoListPage);
+    }, err => {
+      alert("An error has occurred");
+    });
+  }
+    
   
 }

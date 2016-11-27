@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 
 import { LobbyPage } from '../lobby/lobby';
 
+import { RestTodoUsers } from '../../providers/rest-todo-users';
+
 /*
   Generated class for the Register page.
 
@@ -15,22 +17,33 @@ import { LobbyPage } from '../lobby/lobby';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController) {
-    this.navCtrl = navCtrl;
+  constructor(public navCtrl: NavController,
+              public TodoUsersRest: RestTodoUsers) {
+    // this.navCtrl = navCtrl;
   }
 
   ionViewDidLoad() {
     console.log('Hello RegisterPage Page');
   }
 
-    register() {
-    this.navCtrl.push(LobbyPage);
-  }
+  //   register() {
+  //   this.navCtrl.push(LobbyPage);
+  // }
   
     user = {}; 
     
-  signupForm = function(form) { 
+  signupForm(form) { 
     if(form.invalid) return alert("Please complete the form before proceeding.");
+    
+    this.TodoUsersRest.register(this.user)
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.setItem('token', res.token);
+      window.localStorage.setItem('userId', res.id);
+      this.navCtrl.setRoot(LobbyPage);
+    }, err => {
+      alert("An error has occurred");
+    });
   }
 
 }

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Platform, ActionSheetController } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 
 import { TodoListPage } from '../todo-list/todo-list';
 import { LandingPage } from '../landing/landing';
 
 // menu
 import { LobbyPage } from '../lobby/lobby';
+import { SharedListsPage } from '../shared-lists/shared-lists';
 import { CreateNewPage } from '../create-new/create-new';
 
 /*
@@ -40,7 +41,7 @@ export class MyListsPage {
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
-              public actionSheetCtrl: ActionSheetController,
+              public menuCtrl: MenuController,
               public params: NavParams) {
     this.navCtrl = navCtrl;
   }
@@ -49,34 +50,39 @@ export class MyListsPage {
     console.log('Hello MyListsPage Page');
   }
   
-      presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Go to',
-      buttons: [
-        {
-          text: 'Home',
-          role: 'Home',
-          handler: () => {
-            this.navCtrl.push(LobbyPage);
-          }
-        },{
-          text: 'New List',
-          role: 'newlist',
-          handler: () => {
-            this.navCtrl.push(CreateNewPage);
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  // menu 
+   openMenu() {
+   this.menuCtrl.open();
+ }
+ 
+  closeMenu() {
+   this.menuCtrl.close();
+ }
+
+ toggleMenu() {
+   this.menuCtrl.toggle();
+ }
+ 
+  home() {
+    this.navCtrl.setRoot(LobbyPage);
   }
+  
+  sharedLists() {
+    this.navCtrl.push(SharedListsPage);
+  }
+  
+  newlist() {
+    this.navCtrl.push(CreateNewPage);
+  }
+
+// main buttons
 
   todolist(myList) {
     this.navCtrl.push(TodoListPage, {currentTodoList: myList});
   }
   
   logout() {
-    this.navCtrl.push(LandingPage);
+    this.navCtrl.setRoot(LandingPage);
   }
   
 }

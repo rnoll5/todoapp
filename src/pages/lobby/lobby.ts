@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Platform, ActionSheetController } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 
 import { LandingPage } from '../landing/landing';
 import { MyListsPage } from '../my-lists/my-lists';
@@ -25,7 +25,7 @@ export class LobbyPage {
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
-              public actionSheetCtrl: ActionSheetController) {
+              public menuCtrl: MenuController) {
     this.navCtrl = navCtrl;
   }
 
@@ -33,44 +33,42 @@ export class LobbyPage {
     console.log('Hello LobbyPage Page');
   }
   
-    presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Go to',
-      buttons: [
-        {
-          text: 'Friends',
-          role: 'Friends',
-          handler: () => {
-            this.navCtrl.push(FriendsPage);
-          }
-        },{
-          text: 'Settings',
-          handler: () => {
-            this.navCtrl.push(ProfilePage);
-          }
-        },{
-          text: 'New List',
-          role: 'newlist',
-          handler: () => {
-            this.navCtrl.push(CreateNewPage);
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  // menu 
+   openMenu() {
+   this.menuCtrl.open();
+ }
+ 
+  closeMenu() {
+   this.menuCtrl.close();
+ }
+
+ toggleMenu() {
+   this.menuCtrl.toggle();
+ }
+ 
+  friends() {
+    this.navCtrl.push(FriendsPage);
   }
   
+  settings() {
+    this.navCtrl.push(ProfilePage);
+  }
+  
+  newlist() {
+    this.navCtrl.push(CreateNewPage);
+  }
 
+// main buttons
   logout() {
     this.navCtrl.setRoot(LandingPage);
   }
   
   mylists() {
-    this.navCtrl.push(MyListsPage);
+    this.navCtrl.setRoot(MyListsPage);
   }
   
   sharedlists() {
-    this.navCtrl.push(SharedListsPage);
+    this.navCtrl.setRoot(SharedListsPage);
   }
   
 }

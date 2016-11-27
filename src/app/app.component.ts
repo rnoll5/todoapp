@@ -11,6 +11,7 @@ import { LobbyPage } from '../pages/lobby/lobby';
 })
 export class MyApp {
   rootPage = LandingPage;
+    // rootPage = window.localStorage.getItem("token") ? LobbyPage : LandingPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

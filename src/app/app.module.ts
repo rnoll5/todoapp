@@ -16,6 +16,10 @@ import { CreateNewPage } from '../pages/create-new/create-new';
 import { ProfilePage } from '../pages/profile/profile';
 import { FriendsPage } from '../pages/friends/friends';
 
+// rest services
+import { RestTodoUsers } from '../providers/rest-todo-users';
+import { RestTodoList } from '../providers/rest-todo-list';
+
 const injections = [
   MyApp,
   LandingPage,
@@ -38,6 +42,6 @@ const injections = [
   ],
   bootstrap: [IonicApp],
   entryComponents: injections,
-  providers: []
+  providers: [RestTodoUsers, RestTodoList]
 })
 export class AppModule {}

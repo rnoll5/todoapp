@@ -6,7 +6,10 @@
 -->
 <ion-header>
   <ion-navbar color="primary" text-center>
+        <button ion-button menuToggle icon-only (click)="openMenu()"><ion-icon name='menu'></ion-icon></button>
+        
     <ion-title>To Do Lists </ion-title>
+    
         <ion-buttons end>
       <button ion-button item-right (click)="logout()" icon-left>
         <ion-icon name="ios-exit-outline"></ion-icon>LogOut
@@ -14,12 +17,25 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+    
+<ion-menu [content]="mycontent" persistent="true">
+  <ion-content>
+    <ion-list>
+    <button ion-item (click)="friends()" icon-left><ion-icon color="primary" name="md-contacts"></ion-icon>Friends</button>    
+    <button ion-item (click)="settings()" icon-left><ion-icon color="primary" name="md-settings"></ion-icon>Settings</button>  
+    <button ion-item (click)="newlist()" icon-left><ion-icon color="primary" name="md-create"></ion-icon>New List</button>  
+    <button ion-item (click)="closeMenu()">Close Menu</button>  
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-<ion-content padding class="action-sheets-basic-page">
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+  
+
+
+<ion-content padding>
   <button ion-button outline block color="primary" (click)="mylists()" icon-left><ion-icon name="ios-list-outline"></ion-icon>My Lists</button>
     <button ion-button outline block color="primary" (click)="sharedlists()" icon-left><ion-icon name="ios-list-outline"></ion-icon>Shared Lists</button>
-    <button ion-button block color="primary" (click)="presentActionSheet()" icon-left><ion-icon name="ios-menu-outline"></ion-icon>
-    Menu
-  </button>
+
 </ion-content>
 

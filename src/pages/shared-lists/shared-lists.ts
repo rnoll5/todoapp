@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Platform, ActionSheetController } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 
 import { SharedTodoListPage } from '../shared-todo-list/shared-todo-list';
 import { LandingPage } from '../landing/landing';
 
 // menu
 import { LobbyPage } from '../lobby/lobby';
+import { MyListsPage } from '../my-lists/my-lists';
+import { FriendsPage } from '../friends/friends';
 import { CreateNewPage } from '../create-new/create-new';
 
 /*
@@ -36,7 +38,7 @@ export class SharedListsPage {
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
-              public actionSheetCtrl: ActionSheetController,
+              public menuCtrl: MenuController,
               public params: NavParams) {
                 this.navCtrl = navCtrl;
               }
@@ -45,34 +47,43 @@ export class SharedListsPage {
     console.log('Hello SharedListsPage Page');
   }
   
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Go to',
-      buttons: [
-        {
-          text: 'Home',
-          role: 'Home',
-          handler: () => {
-            this.navCtrl.push(LobbyPage);
-          }
-        },{
-          text: 'New List',
-          role: 'newlist',
-          handler: () => {
-            this.navCtrl.push(CreateNewPage);
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  // menu 
+   openMenu() {
+   this.menuCtrl.open();
+ }
+ 
+  closeMenu() {
+   this.menuCtrl.close();
+ }
+
+ toggleMenu() {
+   this.menuCtrl.toggle();
+ }
+ 
+  home() {
+    this.navCtrl.setRoot(LobbyPage);
   }
+  
+  myLists() {
+    this.navCtrl.push(MyListsPage);
+  }
+  
+  friends() {
+    this.navCtrl.push(FriendsPage);
+  }
+  
+  newlist() {
+    this.navCtrl.push(CreateNewPage);
+  }
+
+// main buttons
 
   sharedtodolist(sharedList) {
     this.navCtrl.push(SharedTodoListPage, {currentSharedList: sharedList});
   }
   
   logout() {
-    this.navCtrl.push(LandingPage);
+    this.navCtrl.setRoot(LandingPage);
   }
   
 }

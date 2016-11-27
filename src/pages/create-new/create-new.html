@@ -19,7 +19,7 @@
   <ion-list inset>
     <ion-list-header>
       <ion-label>List Title</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="title"></ion-input>
     </ion-list-header>
 
     <ion-item>
@@ -31,7 +31,7 @@
       
       
       <ion-item>
-        <ion-input type="text" [(ngModel)]="todoList[i]"></ion-input>
+        <ion-input type="text" [(ngModel)]="todoList[i].name"></ion-input>
       </ion-item>
       
       <ion-item-options>
@@ -43,7 +43,8 @@
       
       
     </ion-item-sliding>
+    {{consoleLog(todoList)}}
 <button ion-button outline block color="primary" (click)="saveShare()">Share List</button>
-<button ion-button outline block color="primary" (click)="save()">Save List</button>
+<button ion-button outline block color="primary" (click)="saveList()">Save List</button>
 </ion-list> 
 </ion-content>
